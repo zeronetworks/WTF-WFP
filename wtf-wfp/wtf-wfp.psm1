@@ -1161,5 +1161,3 @@ param (
 
     Set-FwEngineOption -NetEventMatchAnyKeywords None 
 }
-
-Export-ModuleMember -Function Get-WFPInfo
