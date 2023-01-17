@@ -650,10 +650,6 @@ function isIPv6([System.Net.IPAddress]$addr)
     return ($addr.AddressFamily -eq [System.Net.Sockets.AddressFamily]::InterNetworkV6)
 }  
 
-if (-not (Get-Module -ListAvailable -Name NtObjectManager))
-{
-    Install-Module -Name NtObjectManager -Force
-}
 
 function GEt-NetworkInterfaceParam 
 {
@@ -1127,7 +1123,6 @@ param (
     )
 
     $FormatEnumerationLimit = -1
-    Import-Module -Name NtObjectManager
 
     $is4 = -not (($PSBoundParameters.ContainsKey('localAddress') -and (isIPv6($localAddress))) -or ($PSBoundParameters.ContainsKey('remoteAddress') -and (isIPv6($remoteAddress)))) 
     $is6 = -not (($PSBoundParameters.ContainsKey('localAddress') -and (isIPv4($localAddress))) -or ($PSBoundParameters.ContainsKey('remoteAddress') -and (isIPv4($remoteAddress)))) 
