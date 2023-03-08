@@ -720,20 +720,21 @@ function isALELAyer($l)
     else {return $false}
 }
 
-function CreateASingleFilterTemplate(
+function CreateASingleFilterTemplate {
+    param(
     [System.Guid]$layerKey,
     [System.Net.IPAddress]$localadd,
-    [System.Net.IPAddress]$remoteaddr,
+    [System.Net.IPAddress]$remoteadd,
     [System.UInt16]$localprt,
     [System.UInt16]$remoteprt,
     [System.Net.Sockets.ProtocolType]$protType,
     [NtApiDotNet.Net.Firewall.FirewallConditionFlags]$flags,
     [bool]$appContainers)
-{
+
     $fwLayer = New-Object NtObjectManager.Utils.Firewall.FirewallLayerGuid -ArgumentList $layerKey
     $temp = New-FwFilterTemplate -LayerKey $fwLayer -Sorted
     if ($null -ne $localadd) {
-        Add-FwConditionWrapper $temp -LocalIPAddress $localadd.IPAddressToString | Out-Null
+        Add-FwConditionWrapper $temp -LocalIPAddress $localadd | Out-Null
         
         $prof,$luid,$intType = GEt-NetworkInterfaceParam -addr $localadd
         if ($null -ne $prof)
@@ -745,9 +746,9 @@ function CreateASingleFilterTemplate(
         }
     }
     if (-not $appContainers) {Add-NoAppContainersCondition $temp | Out-Null} 
-    if ($null -ne $remoteaddr) {Add-FwConditionWrapper $temp -IPAddress $remoteadd.IPAddressToString | Out-Null}
+    if ($null -ne $remoteadd) {Add-FwConditionWrapper $temp -IPAddress $remoteadd | Out-Null}
     if (0 -ne $localprt) {Add-FwConditionWrapper $temp -LocalPort $localprt | Out-Null}
-    if (0 -ne $remoteprt) {Add-FwConditionWrapper $temp -Port $remoteprt| Out-Null}
+    if (0 -ne $remoteprt) {Add-FwConditionWrapper $temp -Port $remoteprt | Out-Null}
     Add-FwConditionWrapper $temp -ProtocolType $protType | Out-Null
     Add-FwConditionWrapper $temp -ConditionFlags $flags | Out-Null
 
@@ -809,7 +810,8 @@ function CreateLayersList(
 
 }
 
-function CreateFilterTemplates(
+function CreateFilterTemplates{
+    param(
     [bool]$isV4,
     [bool]$isInbound,
     [object[]]$layers,
@@ -820,12 +822,12 @@ function CreateFilterTemplates(
     [System.Net.Sockets.ProtocolType]$protType,
     [NtApiDotNet.Net.Firewall.FirewallConditionFlags]$flags,
     [bool]$appContainers)
-{
+
     $templates = New-Object System.Collections.ArrayList
 
     foreach ($layer in $layers) 
     {
-        $templates += CreateASingleFilterTemplate -layerKey $layer -localadd $localadd -remoteaddr $remoteaddr -localprt $localprt -remoteprt $remoteprt -protType $protType -flags $flags -appContainers $appContainers
+        $templates += CreateASingleFilterTemplate -layerKey $layer -localadd $localadd -remoteadd $remoteaddr -localprt $localprt -remoteprt $remoteprt -protType $protType -flags $flags -appContainers $appContainers
     }
     return $templates
 }
@@ -1026,13 +1028,24 @@ function Remove-TraceFilter
 
 function Show-WFP-Data
 {
-    param([bool]$isipv4,[bool]$isInbound,[bool]$showAllLayers)
+    param(
+    [bool]$isipv4,
+    [bool]$isInbound,
+    [bool]$showAllLayers,
+    [System.Net.Sockets.ProtocolType]$protocolType,
+    [System.Net.IPAddress]$localAddress,
+    [System.Net.IPAddress]$remoteAddress,
+    [System.UInt16]$localport,
+    [System.UInt16]$remoteport,
+    [uint32]$conditionFlag,
+    [bool]$showAppContainerFilters
+    )
     
     Get-Show-AllLayersAndFilter
 
     $layersList = CreateLayersList -isV4 $isipv4 -isInbound $isInbound -allLayers $showAllLayers
     
-    $templateList = CreateFilterTemplates -isV4 $isipv4 -layers $layersList -isInbound $isInbound -protType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent 
+    $templateList = CreateFilterTemplates -isV4 $isipv4 -layers $layersList -isInbound $isInbound -protType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters 
 
     Show-RelevantCondition -template $templateList
     
@@ -1141,7 +1154,7 @@ param (
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv4 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent
+        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
 
     }
     if ($is6)
@@ -1149,7 +1162,7 @@ param (
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv6 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $false -showAllLayers -isInbound $isInbound $allLayers.IsPresent
+        Show-WFP-Data -isipv4 $false -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
     }
 
     Remove-TraceFilter
