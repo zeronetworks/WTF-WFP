@@ -1,6 +1,6 @@
 # What The Filter is Going on with Windows Filtering Platform
-WTF-WFP is a light-weitht, easy to use, powershell module that helps you debug and analyze the Windows Filtering Platfrom. 
-The advantage WTF-WFP has is that it enalbes one to understand the WFP without familiarizing oneself too much with the WFP API. 
+WTF-WFP is a lightweight, easy to use, powershell module that helps you debug and analyze the Windows Filtering Platform.
+The advantage WTF-WFP has is that it enables one to understand the WFP without familiarizing oneself too much with the WFP API.
 
 # Quick Start
 
@@ -15,7 +15,7 @@ Now the Get-WFPInfo command should be available. You can validate and get more i
 Get-Help Get-WFPInfo
 ```
 
-To start analzing the WFP, select which network interface you wish to analyze, for which protocol, and in which direction (inbound or outbound). There are additional parameters, but these ones are the most basic which will probably give you most of the infromation you need. Here are a couple of examples:
+To start analyzing the WFP, select which network interface you wish to analyze, for which protocol, and in which direction (inbound or outbound). There are additional parameters, but these ones are the most basic which will probably give you most of the infromation you need. Here are a couple of examples:
 
 To get filters for inbound Udp traffic for local IPv4 10.0.0.1
 
@@ -29,7 +29,7 @@ To get filters for outbound Tcp traffic from address IPv4 10.0.0.1 towards 172.1
 Get-WFPInfo -outbound -localAddress 10.0.0.1 -protocolType Tcp -remoteAddress 172.16.5.5 -remotePort 3389 -csvPath "c:\wfp.csv"
 ```
 
-Activate a trace for inbound SMB traffic, to see which filters block it: 
+Activate a trace for inbound SMB traffic, to see which filters block it:
 ```powershell
 Get-WFPInfo -inbound -localAddress 10.0.0.1 -protocolType Tcp -localPort 445 -netTrace
 ```
@@ -52,16 +52,16 @@ Taken from the help menu:
         Enumerates only filters that match the provided protocol
 
     -localAddress <IPAddress>
-        If included, only enumerates filtes that match the specific local address, the IP family, and the local NIC
+        If included, only enumerates filters that match the specific local address, the IP family, and the local NIC
 
     -remoteAddress <IPAddress>
-        If included, only enumerates filtes that match the specific remote address.
+        If included, only enumerates filters that match the specific remote address.
 
     -localport <UInt16>
-        If included, only enumerates filtes that match the specific local port.
+        If included, only enumerates filters that match the specific local port.
 
     -remoteport <UInt16>
-        If included, only enumerates filtes that match the specific remote port.
+        If included, only enumerates filters that match the specific remote port.
 
     -conditionFlag <UInt32>
         If included, enumerates filters using FWP_CONDITION_FLAG bitmap
@@ -70,7 +70,7 @@ Taken from the help menu:
         If included, saves the matching filters into a the given path in CSV format
 
     -showAppContainerFilters [<SwitchParameter>]
-        As long as not present, results do not include filtes that a App Container specific
+        As long as not present, results do not include filters that are App Container specific
 
     -detailed [<SwitchParameter>]
         Prints detailed info about each filter
