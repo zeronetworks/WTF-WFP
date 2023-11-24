@@ -856,7 +856,7 @@ function Add-FilterField
 
 function Show-RelevantCondition
 {
-    param($templates)
+    param($templates,$name)
 
     Write-Output "`nFiltering Conditions:"
     Write-Output "----------------------"
@@ -867,13 +867,19 @@ function Show-RelevantCondition
         Write-Output "Conditions for layer $layerKeyName"
         $template.Conditions | Format-Table | Out-String| ForEach-Object {Write-Output $_}
     }
+
+    if ("*" -ne $name)
+    {
+        Write-Output "Filter name: " + $name
+    }
 }
 
 function Show-RelevantFilter {
     param(
         $templates,
         [String]$csvPath,
-        [bool]$showDetails)
+        [bool]$showDetails,
+        $name)
 
 
     Write-Output "`nWFP Relevant Filters:"
@@ -895,18 +901,18 @@ function Show-RelevantFilter {
 
         if ($showDetails){
 
-            $fwfiltersList| Format-FwFilter | Out-String| ForEach-Object {Write-Output $_}
+            $fwfiltersList| Where-Object {$_.Name -like $name} | Format-FwFilter | Out-String| ForEach-Object {Write-Output $_}
 
         }
         else {
             Add-FilterField -fwfilters $fwfiltersList  
 
-            $fwfiltersList | Format-Table -Property FilterId,ActionType,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,StrConditions,Description -AutoSize | Out-String  | ForEach-Object {Write-Output $_} 
+            $fwfiltersList | Where-Object {$_.Name -like $name} |Format-Table -Property FilterId,ActionType,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,StrConditions,Description -AutoSize | Out-String  | ForEach-Object {Write-Output $_} 
         }
 
         if (-not ([String]::IsNullOrEmpty($csvPath)))
         {
-            $fwfiltersList  | Select-Object -Property ActionType,FilterId,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,Description,StrConditions,ProviderKey,StrProviderData,SecurityDescriptor | Export-Csv -Path $csvPath
+            $fwfiltersList  | Where-Object {$_.Name -like $name} | Select-Object -Property ActionType,FilterId,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,Description,StrConditions,ProviderKey,StrProviderData,SecurityDescriptor | Export-Csv -Path $csvPath
         }
     }
 
@@ -1038,7 +1044,8 @@ function Show-WFP-Data
     [System.UInt16]$localport,
     [System.UInt16]$remoteport,
     [uint32]$conditionFlag,
-    [bool]$showAppContainerFilters
+    [bool]$showAppContainerFilters,
+    [string]$filterName
     )
     
     Get-Show-AllLayersAndFilter
@@ -1047,9 +1054,9 @@ function Show-WFP-Data
     
     $templateList = CreateFilterTemplates -isV4 $isipv4 -layers $layersList -isInbound $isInbound -protType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters 
 
-    Show-RelevantCondition -template $templateList
+    Show-RelevantCondition -template $templateList -name $filterName
     
-    Show-RelevantFilter -templates $templateList -csvPath $csvPath -showDetails $detailed.IsPresent
+    Show-RelevantFilter -templates $templateList -csvPath $csvPath -showDetails $detailed.IsPresent -name $filterName
 
     if ($netTrace.IsPresent)
     {
@@ -1112,6 +1119,9 @@ function Get-WFPInfo {
   .PARAMETER allLayers
   When present, prints more filters at different layers, depending on the inbound/outbound params.
 
+  .PARAMETER name
+  When present, prints only filters which have matching substring to the provided name 
+
   .EXAMPLE
   PS> Get-WFPInfo -inbound -localAddress <localIP> -localport <localpor> -remoteAddress <remoteAddr> -protocolType Tcp -csvPath results.csv
 
@@ -1132,7 +1142,8 @@ param (
     [switch]$detailed,
     [switch]$netTrace,
     [switch]$addTraceFilters,
-    [switch]$allLayers
+    [switch]$allLayers,
+    [string]$name
     )
 
     $FormatEnumerationLimit = -1
@@ -1149,12 +1160,21 @@ param (
 
     if ($netTrace.IsPresent) {PromptUser}
 
+    if ($null -eq $name)
+    {
+        $name = "*"
+    }
+    else 
+    {
+        $name = "*" + $name + "*"
+    }
+
     if ($is4)
     {
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv4 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
+        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent -filterName $name
 
     }
     if ($is6)
@@ -1162,7 +1182,7 @@ param (
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv6 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $false -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
+        Show-WFP-Data -isipv4 $false -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent -filterName $name
     }
 
     Remove-TraceFilter
