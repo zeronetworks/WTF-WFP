@@ -438,10 +438,10 @@ function Add-ProfileCondition
         [NtApiDotNet.Net.Firewall.FirewallProfileId]$profileType
     )
 
-    if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_CURRENT_PROFILE_ID" )
+    if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_ORIGINAL_PROFILE_ID" )
     {
         [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
-        $profileGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_CURRENT_PROFILE_ID
+        $profileGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_ORIGINAL_PROFILE_ID
         $Builder.AddCondition($MatchType,$profileGUID,[NtApiDotNet.Net.Firewall.FirewallValue]::FromUInt32($profileType))   
     }
     
