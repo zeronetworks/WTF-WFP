@@ -1,6 +1,6 @@
 # What The Filter is Going on with Windows Filtering Platform
-WTF-WFP is a light-weith, easy to use, powershell module that helps you debug and analyze the Windows Filtering Platfrom. 
-The advantage WTF-WFP has is that it enalbes one to understand the WFP without, without familiarizing oneself too much with the WFP API. 
+WTF-WFP is a light-weitht, easy to use, powershell module that helps you debug and analyze the Windows Filtering Platfrom. 
+The advantage WTF-WFP has is that it enalbes one to understand the WFP without familiarizing oneself too much with the WFP API. 
 
 # Quick Start
 
