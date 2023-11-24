@@ -1,36 +1,36 @@
 # What The Filter is Going on with Windows Filtering Platform
-WTF-WFP is a light-weitht, easy to use, powershell module that helps you debug and analyze the Windows Filtering Platfrom. 
-The advantage WTF-WFP has is that it enalbes one to understand the WFP without familiarizing oneself too much with the WFP API. 
+WTF-WFP is a lightweight, easy to use, PowerShell module that helps you debug and analyze the Windows Filtering Platform. 
+The advantage WTF-WFP has is that it enables one to understand the WFP without familiarizing oneself too much with the WFP API. 
 
 # Quick Start
 
-WTF-WFP utilizes [NtObjectManager](https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools/tree/main/NtObjectManager) to access the WFP APIs (and a bunch of other helpful functions it exposes). To install, simply run the following from an elevated powershell shell:
+WTF-WFP utilizes [NtObjectManager](https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools/tree/main/NtObjectManager) to access the WFP APIs (and a bunch of other helpful functions it exposes). To install, simply run the following from an elevated PowerShell shell:
 
-```powershell
-Install-Module NtObjectManager
+```PowerShell
+Install-Module -Name NtObjectManager -RequiredVersion 1.1.33
 Install-Module wtf-wfp
 ```
 Now the Get-WFPInfo command should be available. You can validate and get more info via the help command:
-```powershell
+```PowerShell
 Get-Help Get-WFPInfo
 ```
 
-To start analzing the WFP, select which network interface you wish to analyze, for which protocol, and in which direction (inbound or outbound). There are additional parameters, but these ones are the most basic which will probably give you most of the infromation you need. Here are a couple of examples:
+To start analyzing the WFP, select which network interface you wish to analyze, for which protocol, and in which direction (inbound or outbound). There are additional parameters, but these ones are the most basic which will probably give you most of the information you need. Here are a couple of examples:
 
 To get filters for inbound Udp traffic for local IPv4 10.0.0.1
 
-```powershell
+```PowerShell
 Get-WFPInfo -inbound -localAddress 10.0.0.1 -protocolType Udp
 ```
 
 To get filters for outbound Tcp traffic from address IPv4 10.0.0.1 towards 172.16.5.5 for remote port 3389, and also save the WFP data into csv
 
-```powershell
+```PowerShell
 Get-WFPInfo -outbound -localAddress 10.0.0.1 -protocolType Tcp -remoteAddress 172.16.5.5 -remotePort 3389 -csvPath "c:\wfp.csv"
 ```
 
 Activate a trace for inbound SMB traffic, to see which filters block it: 
-```powershell
+```PowerShell
 Get-WFPInfo -inbound -localAddress 10.0.0.1 -protocolType Tcp -localPort 445 -netTrace
 ```
 
@@ -40,7 +40,7 @@ Note: MS Defender may alert on NtObjectManager, so you may need to turn off [rea
 
 Taken from the help menu:
 
- ```powershell
+ ```PowerShell
  PARAMETERS
     -inbound [<SwitchParameter>]
         Enumerates only inbound filters for the AUTH_RECV_ACCEPT_V4/6 ALE layer.
