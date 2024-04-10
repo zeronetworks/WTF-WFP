@@ -421,6 +421,134 @@ $hashTable = @{
     "FWPM_LAYER_INGRESS_VSWITCH_TRANSPORT_V6" = $vSwitchTransportConditions
 }
 
+$fwLayerGuids = @{
+    "FWPM_LAYER_INBOUND_IPPACKET_V4" = [Guid]::new("c86fd1bf-21cd-497e-a0bb-17425c885c58")
+    "FWPM_LAYER_INBOUND_IPPACKET_V4_DISCARD" = [Guid]::new("b5a230d0-a8c0-44f2-916e-991b53ded1f7")
+    "FWPM_LAYER_INBOUND_IPPACKET_V6" = [Guid]::new("f52032cb-991c-46e7-971d-2601459a91ca")
+    "FWPM_LAYER_INBOUND_IPPACKET_V6_DISCARD" = [Guid]::new("bb24c279-93b4-47a2-83ad-ae1698b50885")
+    "FWPM_LAYER_OUTBOUND_IPPACKET_V4" = [Guid]::new("1e5c9fae-8a84-4135-a331-950b54229ecd")
+    "FWPM_LAYER_OUTBOUND_IPPACKET_V4_DISCARD" = [Guid]::new("08e4bcb5-b647-48f3-953c-e5ddbd03937e")
+    "FWPM_LAYER_OUTBOUND_IPPACKET_V6" = [Guid]::new("a3b3ab6b-3564-488c-9117-f34e82142763")
+    "FWPM_LAYER_OUTBOUND_IPPACKET_V6_DISCARD" = [Guid]::new("9513d7c4-a934-49dc-91a7-6ccbcc02e300")
+    "FWPM_LAYER_IPFORWARD_V4" = [Guid]::new("a82acc24-4ee1-4ee1-b465-fd1d25cb10a4")
+    "FWPM_LAYER_IPFORWARD_V4_DISCARD" = [Guid]::new("9e9ea773-2fae-4210-8f17-34129ef369eb")
+    "FWPM_LAYER_IPFORWARD_V6" = [Guid]::new("7b964818-19c7-493a-b71f-832c3684d28c")
+    "FWPM_LAYER_IPFORWARD_V6_DISCARD" = [Guid]::new("31524a5d-1dfe-472f-bb93-518ee945d8a2")
+    "FWPM_LAYER_INBOUND_TRANSPORT_V4" = [Guid]::new("5926dfc8-e3cf-4426-a283-dc393f5d0f9d")
+    "FWPM_LAYER_INBOUND_TRANSPORT_V4_DISCARD" = [Guid]::new("ac4a9833-f69d-4648-b261-6dc84835ef39")
+    "FWPM_LAYER_INBOUND_TRANSPORT_V6" = [Guid]::new("634a869f-fc23-4b90-b0c1-bf620a36ae6f")
+    "FWPM_LAYER_INBOUND_TRANSPORT_V6_DISCARD" = [Guid]::new("2a6ff955-3b2b-49d2-9848-ad9d72dcaab7")
+    "FWPM_LAYER_OUTBOUND_TRANSPORT_V4" = [Guid]::new("09e61aea-d214-46e2-9b21-b26b0b2f28c8")
+    "FWPM_LAYER_OUTBOUND_TRANSPORT_V4_DISCARD" = [Guid]::new("c5f10551-bdb0-43d7-a313-50e211f4d68a")
+    "FWPM_LAYER_OUTBOUND_TRANSPORT_V6" = [Guid]::new("e1735bde-013f-4655-b351-a49e15762df0")
+    "FWPM_LAYER_OUTBOUND_TRANSPORT_V6_DISCARD" = [Guid]::new("f433df69-ccbd-482e-b9b2-57165658c3b3")
+    "FWPM_LAYER_STREAM_V4" = [Guid]::new("3b89653c-c170-49e4-b1cd-e0eeee19a3e0")
+    "FWPM_LAYER_STREAM_V4_DISCARD" = [Guid]::new("25c4c2c2-25ff-4352-82f9-c54a4a4726dc")
+    "FWPM_LAYER_STREAM_V6" = [Guid]::new("47c9137a-7ec4-46b3-b6e4-48e926b1eda4")
+    "FWPM_LAYER_STREAM_V6_DISCARD" = [Guid]::new("10a59fc7-b628-4c41-9eb8-cf37d55103cf")
+    "FWPM_LAYER_DATAGRAM_DATA_V4" = [Guid]::new("3d08bf4e-45f6-4930-a922-417098e20027")
+    "FWPM_LAYER_DATAGRAM_DATA_V4_DISCARD" = [Guid]::new("18e330c6-7248-4e52-aaab-472ed67704fd")
+    "FWPM_LAYER_DATAGRAM_DATA_V6" = [Guid]::new("fa45fe2f-3cba-4427-87fc-57b9a4b10d00")
+    "FWPM_LAYER_DATAGRAM_DATA_V6_DISCARD" = [Guid]::new("09d1dfe1-9b86-4a42-be9d-8c315b92a5d0")
+    "FWPM_LAYER_INBOUND_ICMP_ERROR_V4" = [Guid]::new("61499990-3cb6-4e84-b950-53b94b6964f3")
+    "FWPM_LAYER_INBOUND_ICMP_ERROR_V4_DISCARD" = [Guid]::new("a6b17075-ebaf-4053-a4e7-213c8121ede5")
+    "FWPM_LAYER_INBOUND_ICMP_ERROR_V6" = [Guid]::new("65f9bdff-3b2d-4e5d-b8c6-c720651fe898")
+    "FWPM_LAYER_INBOUND_ICMP_ERROR_V6_DISCARD" = [Guid]::new("a6e7ccc0-08fb-468d-a472-9771d5595e09")
+    "FWPM_LAYER_OUTBOUND_ICMP_ERROR_V4" = [Guid]::new("41390100-564c-4b32-bc1d-718048354d7c")
+    "FWPM_LAYER_OUTBOUND_ICMP_ERROR_V4_DISCARD" = [Guid]::new("b3598d36-0561-4588-a6bf-e955e3f6264b")
+    "FWPM_LAYER_OUTBOUND_ICMP_ERROR_V6" = [Guid]::new("7fb03b60-7b8d-4dfa-badd-980176fc4e12")
+    "FWPM_LAYER_OUTBOUND_ICMP_ERROR_V6_DISCARD" = [Guid]::new("65f2e647-8d0c-4f47-b19b-33a4d3f1357c")
+    "FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4" = [Guid]::new("1247d66d-0b60-4a15-8d44-7155d0f53a0c")
+    "FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4_DISCARD" = [Guid]::new("0b5812a2-c3ff-4eca-b88d-c79e20ac6322")
+    "FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6" = [Guid]::new("55a650e1-5f0a-4eca-a653-88f53b26aa8c")
+    "FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6_DISCARD" = [Guid]::new("cbc998bb-c51f-4c1a-bb4f-9775fcacab2f")
+    "FWPM_LAYER_ALE_AUTH_LISTEN_V4" = [Guid]::new("88bb5dad-76d7-4227-9c71-df0a3ed7be7e")
+    "FWPM_LAYER_ALE_AUTH_LISTEN_V4_DISCARD" = [Guid]::new("371dfada-9f26-45fd-b4eb-c29eb212893f")
+    "FWPM_LAYER_ALE_AUTH_LISTEN_V6" = [Guid]::new("7ac9de24-17dd-4814-b4bd-a9fbc95a321b")
+    "FWPM_LAYER_ALE_AUTH_LISTEN_V6_DISCARD" = [Guid]::new("60703b07-63c8-48e9-ada3-12b1af40a617")
+    "FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4" = [Guid]::new("e1cd9fe7-f4b5-4273-96c0-592e487b8650")
+    "FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4_DISCARD" = [Guid]::new("9eeaa99b-bd22-4227-919f-0073c63357b1")
+    "FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6" = [Guid]::new("a3b42c97-9f04-4672-b87e-cee9c483257f")
+    "FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6_DISCARD" = [Guid]::new("89455b97-dbe1-453f-a224-13da895af396")
+    "FWPM_LAYER_ALE_AUTH_CONNECT_V4" = [Guid]::new("c38d57d1-05a7-4c33-904f-7fbceee60e82")
+    "FWPM_LAYER_ALE_AUTH_CONNECT_V4_DISCARD" = [Guid]::new("d632a801-f5ba-4ad6-96e3-607017d9836a")
+    "FWPM_LAYER_ALE_AUTH_CONNECT_V6" = [Guid]::new("4a72393b-319f-44bc-84c3-ba54dcb3b6b4")
+    "FWPM_LAYER_ALE_AUTH_CONNECT_V6_DISCARD" = [Guid]::new("c97bc3b8-c9a3-4e33-8695-8e17aad4de09")
+    "FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4" = [Guid]::new("af80470a-5596-4c13-9992-539e6fe57967")
+    "FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4_DISCARD" = [Guid]::new("146ae4a9-a1d2-4d43-a31a-4c42682b8e4f")
+    "FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6" = [Guid]::new("7021d2b3-dfa4-406e-afeb-6afaf7e70efd")
+    "FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6_DISCARD" = [Guid]::new("46928636-bbca-4b76-941d-0fa7f5d7d372")
+    "FWPM_LAYER_INBOUND_MAC_FRAME_ETHERNET" = [Guid]::new("effb7edb-0055-4f9a-a231-4ff8131ad191")
+    "FWPM_LAYER_OUTBOUND_MAC_FRAME_ETHERNET" = [Guid]::new("694673bc-d6db-4870-adee-0acbdbb7f4b2")
+    "FWPM_LAYER_INBOUND_MAC_FRAME_NATIVE" = [Guid]::new("d4220bd3-62ce-4f08-ae88-b56e8526df50")
+    "FWPM_LAYER_OUTBOUND_MAC_FRAME_NATIVE" = [Guid]::new("94c44912-9d6f-4ebf-b995-05ab8a088d1b")
+    "FWPM_LAYER_INGRESS_VSWITCH_ETHERNET" = [Guid]::new("7d98577a-9a87-41ec-9718-7cf589c9f32d")
+    "FWPM_LAYER_EGRESS_VSWITCH_ETHERNET" = [Guid]::new("86c872b0-76fa-4b79-93a4-0750530ae292")
+    "FWPM_LAYER_INGRESS_VSWITCH_TRANSPORT_V4" = [Guid]::new("b2696ff6-774f-4554-9f7d-3da3945f8e85")
+    "FWPM_LAYER_INGRESS_VSWITCH_TRANSPORT_V6" = [Guid]::new("5ee314fc-7d8a-47f4-b7e3-291a36da4e12")
+    "FWPM_LAYER_EGRESS_VSWITCH_TRANSPORT_V4" = [Guid]::new("b92350b6-91f0-46b6-bdc4-871dfd4a7c98")
+    "FWPM_LAYER_EGRESS_VSWITCH_TRANSPORT_V6" = [Guid]::new("1b2def23-1881-40bd-82f4-4254e63141cb")
+    "FWPM_LAYER_INBOUND_TRANSPORT_FAST" = [Guid]::new("e41d2719-05c7-40f0-8983-ea8d17bbc2f6")
+    "FWPM_LAYER_OUTBOUND_TRANSPORT_FAST" = [Guid]::new("13ed4388-a070-4815-9935-7a9be6408b78")
+    "FWPM_LAYER_INBOUND_MAC_FRAME_NATIVE_FAST" = [Guid]::new("853aaa8e-2b78-4d24-a804-36db08b29711")
+    "FWPM_LAYER_OUTBOUND_MAC_FRAME_NATIVE_FAST" = [Guid]::new("470df946-c962-486f-9446-8293cbc75eb8")
+    "FWPM_LAYER_IPSEC_KM_DEMUX_V4" = [Guid]::new("f02b1526-a459-4a51-b9e3-759de52b9d2c")
+    "FWPM_LAYER_IPSEC_KM_DEMUX_V6" = [Guid]::new("2f755cf6-2fd4-4e88-b3e4-a91bca495235")
+    "FWPM_LAYER_IPSEC_V4" = [Guid]::new("eda65c74-610d-4bc5-948f-3c4f89556867")
+    "FWPM_LAYER_IPSEC_V6" = [Guid]::new("13c48442-8d87-4261-9a29-59d2abc348b4")
+    "FWPM_LAYER_IKEEXT_V4" = [Guid]::new("b14b7bdb-dbbd-473e-bed4-8b4708d4f270")
+    "FWPM_LAYER_IKEEXT_V6" = [Guid]::new("b64786b3-f687-4eb9-89d2-8ef32acdabe2")
+    "FWPM_LAYER_RPC_UM" = [Guid]::new("75a89dda-95e4-40f3-adc7-7688a9c847e1")
+    "FWPM_LAYER_RPC_EPMAP" = [Guid]::new("9247bc61-eb07-47ee-872c-bfd78bfd1616")
+    "FWPM_LAYER_RPC_EP_ADD" = [Guid]::new("618dffc7-c450-4943-95db-99b4c16a55d4")
+    "FWPM_LAYER_RPC_PROXY_CONN" = [Guid]::new("94a4b50b-ba5c-4f27-907a-229fac0c2a7a")
+    "FWPM_LAYER_RPC_PROXY_IF" = [Guid]::new("f8a38615-e12c-41ac-98df-121ad981aade")
+    "FWPM_LAYER_KM_AUTHORIZATION" = [Guid]::new("4aa226e9-9020-45fb-956a-c0249d841195")
+    "FWPM_LAYER_NAME_RESOLUTION_CACHE_V4" = [Guid]::new("0c2aa681-905b-4ccd-a467-4dd811d07b7b")
+    "FWPM_LAYER_NAME_RESOLUTION_CACHE_V6" = [Guid]::new("92d592fa-6b01-434a-9dea-d1e96ea97da9")
+    "FWPM_LAYER_ALE_RESOURCE_RELEASE_V4" = [Guid]::new("74365cce-ccb0-401a-bfc1-b89934ad7e15")
+    "FWPM_LAYER_ALE_RESOURCE_RELEASE_V6" = [Guid]::new("f4e5ce80-edcc-4e13-8a2f-b91454bb057b")
+    "FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V4" = [Guid]::new("b4766427-e2a2-467a-bd7e-dbcd1bd85a09")
+    "FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V6" = [Guid]::new("bb536ccd-4755-4ba9-9ff7-f9edf8699c7b")
+    "FWPM_LAYER_ALE_CONNECT_REDIRECT_V4" = [Guid]::new("c6e63c8c-b784-4562-aa7d-0a67cfc9a3a0")
+    "FWPM_LAYER_ALE_CONNECT_REDIRECT_V6" = [Guid]::new("587e54a7-8046-42ba-a0aa-b716250fc7fd")
+    "FWPM_LAYER_ALE_BIND_REDIRECT_V4" = [Guid]::new("66978cad-c704-42ac-86ac-7c1a231bd253")
+    "FWPM_LAYER_ALE_BIND_REDIRECT_V6" = [Guid]::new("bef02c9c-606b-4536-8c26-1c2fc7b631d4")
+    "FWPM_LAYER_STREAM_PACKET_V4" = [Guid]::new("af52d8ec-cb2d-44e5-ad92-f8dc38d2eb29")
+    "FWPM_LAYER_STREAM_PACKET_V6" = [Guid]::new("779a8ca3-f099-468f-b5d4-83535c461c02")
+    "FWPM_LAYER_INBOUND_RESERVED2" = [Guid]::new("f4fb8d55-c076-46d8-a2c7-6a4c722ca4ed")    
+}
+
+Add-Type -TypeDefinition @"
+public enum FirewallConditionFlags : uint
+{
+    None = 0,
+    IsLoopback = 0x00000001,
+    IsIPSecSecured = 0x00000002,
+    IsReauthorize = 0x00000004,
+    IsWildcardBind = 0x00000008,
+    IsRawEndpoint = 0x00000010,
+    IsFragment = 0x00000020,
+    IsFragmentGroup = 0x00000040,
+    IsIPSecNATTReclassify = 0x00000080,
+    RequiresALEClassify = 0x00000100,
+    IsImplicitBind = 0x00000200,
+    IsReassembled = 0x00000400,
+    IsNameAppSpecified = 0x00004000,
+    IsPromiscuous = 0x00008000,
+    IsAuthFW = 0x00010000,
+    IsReclassify = 0x00020000,
+    IsOutboundPassThru = 0x00040000,
+    IsInboundPassThru = 0x00080000,
+    IsConnectionRedirected = 0x00100000,
+    IsProxyConnection = 0x00200000,
+    IsAppContainerLoopback = 0x00400000,
+    IsNonAppContainerLoopback = 0x00800000,
+    IsReserved = 0x01000000,
+    IsHonoringPolicyAuthorize = 0x02000000
+}
+"@
+
 function IsLegitimateConditionForLayer{
     param([string]$layerKey,[string]$conditionName)
 
@@ -433,16 +561,16 @@ function Add-ProfileCondition
 {
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtApiDotNet.Net.Firewall.FirewallConditionBuilder]$Builder,
+        [NtCoreLib.Net.Firewall]$Builder,
         [string]$layerKeyString,
-        [NtApiDotNet.Net.Firewall.FirewallProfileId]$profileType
+        [NtCoreLib.Net.Firewall.FirewallProfileId]$profileType
     )
 
-    if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_CURRENT_PROFILE_ID" )
+    if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_ORIGINAL_PROFILE_ID" )
     {
-        [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
-        $profileGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_CURRENT_PROFILE_ID
-        $Builder.AddCondition($MatchType,$profileGUID,[NtApiDotNet.Net.Firewall.FirewallValue]::FromUInt32($profileType))   
+        [NtCoreLib.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
+        $profileGUID = [NtCoreLib.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_ORIGINAL_PROFILE_ID
+        $Builder.AddCondition($MatchType,$profileGUID,[NtCoreLib.Net.Firewall.FirewallValue]::FromUInt32($profileType))   
     }
     
     return $Builder
@@ -452,16 +580,16 @@ function Add-LUIDCondition
 {
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtApiDotNet.Net.Firewall.FirewallConditionBuilder]$Builder,
+        [NtCoreLib.Net.Firewall]$Builder,
         [string]$layerKeyString,
         [uint64]$luid
     )
 
     if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_IP_ARRIVAL_INTERFACE" )
     {
-        [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
-        $interfaceGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_IP_ARRIVAL_INTERFACE
-        $Builder.AddCondition($MatchType,$interfaceGUID,[NtApiDotNet.Net.Firewall.FirewallValue]::FromUInt64($luid))
+        [NtCoreLib.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
+        $interfaceGUID = [NtCoreLib.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_IP_ARRIVAL_INTERFACE
+        $Builder.AddCondition($MatchType,$interfaceGUID,[NtCoreLib.Net.Firewall.FirewallValue]::FromUInt64($luid))
     }
     return $Builder
 }
@@ -470,16 +598,16 @@ function Add-InterfaceTypeCondition
 {
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtApiDotNet.Net.Firewall.FirewallConditionBuilder]$Builder,
+        [NtCoreLib.Net.Firewall.FirewallConditionBuilder]$Builder,
         [string]$layerKeyString,
         [uint32]$intType
     )
 
     if (IsLegitimateConditionForLayer -layerKey $layerKeyString -conditionName "FWPM_CONDITION_LOCAL_INTERFACE_TYPE" )
     {`
-        [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
-        $interfaceTypeGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_LOCAL_INTERFACE_TYPE
-        $Builder.AddCondition($MatchType,$interfaceTypeGUID,[NtApiDotNet.Net.Firewall.FirewallValue]::FromUInt32($intType))
+        [NtCoreLib.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
+        $interfaceTypeGUID = [NtCoreLib.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_LOCAL_INTERFACE_TYPE
+        $Builder.AddCondition($MatchType,$interfaceTypeGUID,[NtCoreLib.Net.Firewall.FirewallValue]::FromUInt32($intType))
     }
     return $Builder
 }
@@ -488,21 +616,21 @@ function Add-FwConditionWrapper {
     [CmdletBinding()]
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtApiDotNet.Net.Firewall.FirewallConditionBuilder]$Builder,
-        [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal",
+        [NtCoreLib.Net.Firewall.FirewallConditionBuilder]$Builder,
+        [NtCoreLib.Net.Firewall.FirewallMatchType]$MatchType = "Equal",
         [switch]$PassThru,
         [parameter(Mandatory, ParameterSetName="FromFilename")]
         [string]$Filename,
         [parameter(Mandatory, ParameterSetName="FromAppId")]
         [string]$AppId,
         [parameter(Mandatory, ParameterSetName="FromUserId")]
-        [NtApiDotNet.SecurityDescriptor]$UserId,
+        [NtCoreLib.Security.Authorization.SecurityDescriptor]$UserId,
         [parameter(Mandatory, ParameterSetName="FromRemoteUserId")]
-        [NtApiDotNet.SecurityDescriptor]$RemoteUserId,
+        [NtCoreLib.Security.Authorization.SecurityDescriptor]$RemoteUserId,
         [parameter(Mandatory, ParameterSetName="FromProtocolType")]
         [System.Net.Sockets.ProtocolType]$ProtocolType,
         [parameter(Mandatory, ParameterSetName="FromConditionFlags")]
-        [NtApiDotNet.Net.Firewall.FirewallConditionFlags]$ConditionFlags,
+        [FirewallConditionFlags]$ConditionFlags,
         [parameter(ParameterSetName="FromRemoteEndpoint")]
         [System.Net.IPAddress]$IPAddress,
         [parameter(ParameterSetName="FromRemoteEndpoint")]
@@ -512,20 +640,20 @@ function Add-FwConditionWrapper {
         [parameter(ParameterSetName="FromLocalEndpoint")]
         [int]$LocalPort = -1,
         [parameter(Mandatory, ParameterSetName="FromToken")]
-        [NtApiDotNet.NtToken]$Token,
+        [NtCoreLib.NtToken]$Token,
         [parameter(Mandatory, ParameterSetName="FromRemoteToken")]
-        [NtApiDotNet.NtToken]$RemoteToken,
+        [NtCoreLib.NtToken]$RemoteToken,
         [parameter(Mandatory, ParameterSetName="FromMachineToken")]
-        [NtApiDotNet.NtToken]$MachineToken,
+        [NtCoreLib.NtToken]$MachineToken,
         [parameter(Mandatory, ParameterSetName="FromPackageSid")]
         [NtObjectManager.Utils.Firewall.FirewallPackageSid]$PackageSid,
         [parameter(Mandatory, ParameterSetName="FromProcess")]
-        [NtApiDotNet.NtProcess]$Process,
+        [NtCoreLib.NtProcess]$Process,
         [parameter(Mandatory, ParameterSetName="FromProcessID")]
         [alias("pid")]
         [int]$ProcessId,
         [parameter(Mandatory, ParameterSetName="FromNetEventType")]
-        [NtApiDotNet.Net.Firewall.FirewallNetEventType]$NetEventType
+        [NtCoreLib.Net.Firewall.FirewallNetEventType]$NetEventType
     )
 
     try {
@@ -674,48 +802,48 @@ function Add-NoAppContainersCondition
 {
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtApiDotNet.Net.Firewall.FirewallConditionBuilder]$Builder
+        [NtCoreLib.Net.Firewall]$Builder
     )
 
-    [NtApiDotNet.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
-    $interfaceTypeGUID = [NtApiDotNet.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_ALE_PACKAGE_ID
-    [NtApiDotNet.Sid]$objSID = "S-1-0-0"
+    [NtCoreLib.Net.Firewall.FirewallMatchType]$MatchType = "Equal"
+    $interfaceTypeGUID = [NtCoreLib.Net.Firewall.FirewallConditionGuids]::FWPM_CONDITION_ALE_PACKAGE_ID
+    [NtCoreLib.Sid]$objSID = "S-1-0-0"
 
-    $Builder.AddCondition($MatchType,$interfaceTypeGUID,[NtApiDotNet.Net.Firewall.FirewallValue]::FromSid($objSID))
+    $Builder.AddCondition($MatchType,$interfaceTypeGUID,[NtCoreLib.Net.Firewall.FirewallValue]::FromSid($objSID))
 
     return $Builder
 }
 
 function isALELAyer($l)
 {
-    $aleLayersList = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_LISTEN_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_LISTEN_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_LISTEN_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_LISTEN_V6_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_BIND_REDIRECT_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_BIND_REDIRECT_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_CONNECT_REDIRECT_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_CONNECT_REDIRECT_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6_DISCARD,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_RELEASE_V4,
-    [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_RESOURCE_RELEASE_V6)
+    $aleLayersList = @($fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V4"],
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_LISTEN_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_LISTEN_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_LISTEN_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_LISTEN_V6_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_BIND_REDIRECT_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_BIND_REDIRECT_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_CONNECT_REDIRECT_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_CONNECT_REDIRECT_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_ENDPOINT_CLOSURE_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V4_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_ASSIGNMENT_V6_DISCARD"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_RELEASE_V4"]
+    $fwLayerGuids["FWPM_LAYER_ALE_RESOURCE_RELEASE_V6"])
     if ($l -is $aleLayersList) {return $true}
     else {return $false}
 }
@@ -728,7 +856,7 @@ function CreateASingleFilterTemplate {
     [System.UInt16]$localprt,
     [System.UInt16]$remoteprt,
     [System.Net.Sockets.ProtocolType]$protType,
-    [NtApiDotNet.Net.Firewall.FirewallConditionFlags]$flags,
+    [FirewallConditionFlags]$flags,
     [bool]$appContainers)
 
     $fwLayer = New-Object NtObjectManager.Utils.Firewall.FirewallLayerGuid -ArgumentList $layerKey
@@ -745,7 +873,7 @@ function CreateASingleFilterTemplate {
             Add-InterfaceTypeCondition $temp -layerKeyString $layerKeyString -intType $intType | Out-Null
         }
     }
-    if (-not $appContainers) {Add-NoAppContainersCondition $temp | Out-Null} 
+    #if (-not $appContainers) {Add-NoAppContainersCondition $temp | Out-Null} 
     if ($null -ne $remoteadd) {Add-FwConditionWrapper $temp -IPAddress $remoteadd | Out-Null}
     if (0 -ne $localprt) {Add-FwConditionWrapper $temp -LocalPort $localprt | Out-Null}
     if (0 -ne $remoteprt) {Add-FwConditionWrapper $temp -Port $remoteprt | Out-Null}
@@ -767,42 +895,41 @@ function CreateLayersList(
     if ($isV4)
     {
         if ($isInbound) { 
-            if ($allLayers) {$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_INBOUND_IPPACKET_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_INBOUND_TRANSPORT_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_BIND_REDIRECT_V4
-                )}
-            else { $layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4)}
+            if ($allLayers) {$layerslist = @($fwLayerGuids["FWPM_LAYER_INBOUND_IPPACKET_V4"]
+            $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4"]
+            $fwLayerGuids["FWPM_LAYER_INBOUND_TRANSPORT_V4"]
+            $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4"]
+            $fwLayerGuids["FWPM_LAYER_ALE_BIND_REDIRECT_V4"]
+            )}
+            else { $layerslist = @($fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V4"])}
         }
         else {
-            if ($allLayers){$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_OUTBOUND_IPPACKET_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_OUTBOUND_TRANSPORT_V4,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_CONNECT_REDIRECT_V4
-                )}
-            else{$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V4)}
+            if ($allLayers){$layerslist = @($fwLayerGuids["FWPM_LAYER_OUTBOUND_IPPACKET_V4"],
+            $fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V4"],
+            $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V4"],
+            $fwLayerGuids["FWPM_LAYER_OUTBOUND_TRANSPORT_V4"],
+            $fwLayerGuids["FWPM_LAYER_ALE_CONNECT_REDIRECT_V4"])}
+            else{$layerslist = @($fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V4"])}
         }
     }
     else
     {
         if ($isInbound) {
-            if ($allLayers) {$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_INBOUND_IPPACKET_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_INBOUND_TRANSPORT_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_BIND_REDIRECT_V6)}
-            else { $layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6)}
+            if ($allLayers) {$layerslist = @($fwLayerGuids["FWPM_LAYER_INBOUND_IPPACKET_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6"]
+                $fwLayerGuids["FWPM_LAYER_INBOUND_TRANSPORT_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_BIND_REDIRECT_V6"])}
+            else { $layerslist = @($fwLayerGuids["FWPM_LAYER_ALE_AUTH_RECV_ACCEPT_V6"])}
         }
         else {
-            if ($allLayers){$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_OUTBOUND_IPPACKET_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_OUTBOUND_TRANSPORT_V6,
-                [NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_CONNECT_REDIRECT_V6
+            if ($allLayers){$layerslist = @($fwLayerGuids["FWPM_LAYER_OUTBOUND_IPPACKET_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_FLOW_ESTABLISHED_V6"]
+                $fwLayerGuids["FWPM_LAYER_OUTBOUND_TRANSPORT_V6"]
+                $fwLayerGuids["FWPM_LAYER_ALE_CONNECT_REDIRECT_V6"]
                 )}
-            else{$layerslist = @([NtApiDotNet.Net.Firewall.FirewallLayerGuids]::FWPM_LAYER_ALE_AUTH_CONNECT_V6)}
+            else{$layerslist = @($fwLayerGuids["FWPM_LAYER_ALE_AUTH_CONNECT_V6"])}
         }
     }
 
@@ -820,7 +947,7 @@ function CreateFilterTemplates{
     [System.UInt16]$localprt,
     [System.UInt16]$remoteprt,
     [System.Net.Sockets.ProtocolType]$protType,
-    [NtApiDotNet.Net.Firewall.FirewallConditionFlags]$flags,
+    [FirewallConditionFlags]$flags,
     [bool]$appContainers)
 
     $templates = New-Object System.Collections.ArrayList
@@ -856,7 +983,7 @@ function Add-FilterField
 
 function Show-RelevantCondition
 {
-    param($templates)
+    param($templates,$name)
 
     Write-Output "`nFiltering Conditions:"
     Write-Output "----------------------"
@@ -867,13 +994,19 @@ function Show-RelevantCondition
         Write-Output "Conditions for layer $layerKeyName"
         $template.Conditions | Format-Table | Out-String| ForEach-Object {Write-Output $_}
     }
+
+    if ("*" -ne $name)
+    {
+        Write-Output "Filter name: " + $name
+    }
 }
 
 function Show-RelevantFilter {
     param(
         $templates,
         [String]$csvPath,
-        [bool]$showDetails)
+        [bool]$showDetails,
+        $name)
 
 
     Write-Output "`nWFP Relevant Filters:"
@@ -895,18 +1028,18 @@ function Show-RelevantFilter {
 
         if ($showDetails){
 
-            $fwfiltersList| Format-FwFilter | Out-String| ForEach-Object {Write-Output $_}
+            $fwfiltersList| Where-Object {$_.Name -like $name} | Format-FwFilter | Out-String| ForEach-Object {Write-Output $_}
 
         }
         else {
             Add-FilterField -fwfilters $fwfiltersList  
 
-            $fwfiltersList | Format-Table -Property FilterId,ActionType,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,StrConditions,Description -AutoSize | Out-String  | ForEach-Object {Write-Output $_} 
+            $fwfiltersList | Where-Object {$_.Name -like $name} |Format-Table -Property FilterId,ActionType,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,StrConditions,Description -AutoSize | Out-String  | ForEach-Object {Write-Output $_} 
         }
 
         if (-not ([String]::IsNullOrEmpty($csvPath)))
         {
-            $fwfiltersList  | Select-Object -Property ActionType,FilterId,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,Description,StrConditions,ProviderKey,StrProviderData,SecurityDescriptor | Export-Csv -Path $csvPath
+            $fwfiltersList  | Where-Object {$_.Name -like $name} | Select-Object -Property ActionType,FilterId,LayerKeyName,SubLayerKeyName,$sublayerWeight,Name,Description,StrConditions,ProviderKey,StrProviderData,SecurityDescriptor | Export-Csv -Path $csvPath
         }
     }
 
@@ -942,10 +1075,10 @@ function Get-RelevantNetEVent
     $netTemplate = New-FwNetEventTemplate -Condition $conditions
     # if($isInbound) 
     # {
-    #     $filteredDirection = [NtApiDotNet.Net.Firewall.FirewallNetEventDirectionType]::Outbound
+    #     $filteredDirection = [NtCoreLib.Net.Firewall.FirewallNetEventDirectionType]::Outbound
     # } 
     # else {
-    #     $filteredDirection = [NtApiDotNet.Net.Firewall.FirewallNetEventDirectionType]::Inbound
+    #     $filteredDirection = [NtCoreLib.Net.Firewall.FirewallNetEventDirectionType]::Inbound
     # }
     
     #$netEvents = Get-FwNetEvent -Template $netTemplate | Where-Object {($_.MsFwpDirection -ne $filteredDirection) -and ($_.FilterId -gt 0)}
@@ -975,7 +1108,8 @@ function Show-RelevantNetEvent  {
 function Set-WfpOption
 {
     $oldKeywords = Get-FwEngineOption -NetEventMatchAnyKeywords
-    $newKeywords =  [NtApiDotNet.Net.Firewall.FirewallNetEventKeywords]::ClassifyAllow + [NtApiDotNet.Net.Firewall.FirewallNetEventKeywords]::InboundBCast + [NtApiDotNet.Net.Firewall.FirewallNetEventKeywords]::InboundMCast + [NtApiDotNet.Net.Firewall.FirewallNetEventKeywords]::None 
+    $newKeywords =  [NtCoreLib.Net.Firewall.FirewallNetEventKeywords]::ClassifyAllow + [NtCoreLib.Net.Firewall.FirewallNetEventKeywords]::InboundBCast + [NtCoreLib.Net.Firewall.FirewallNetEventKeywords]::InboundMCast + [NtCoreLib.Net.Firewall.FirewallNetEventKeywords]::None 
+
 
     Set-FwEngineOption -NetEventMatchAnyKeywords $newKeywords
 
@@ -1038,7 +1172,8 @@ function Show-WFP-Data
     [System.UInt16]$localport,
     [System.UInt16]$remoteport,
     [uint32]$conditionFlag,
-    [bool]$showAppContainerFilters
+    [bool]$showAppContainerFilters,
+    [string]$filterName
     )
     
     Get-Show-AllLayersAndFilter
@@ -1047,9 +1182,9 @@ function Show-WFP-Data
     
     $templateList = CreateFilterTemplates -isV4 $isipv4 -layers $layersList -isInbound $isInbound -protType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters 
 
-    Show-RelevantCondition -template $templateList
+    Show-RelevantCondition -template $templateList -name $filterName
     
-    Show-RelevantFilter -templates $templateList -csvPath $csvPath -showDetails $detailed.IsPresent
+    Show-RelevantFilter -templates $templateList -csvPath $csvPath -showDetails $detailed.IsPresent -name $filterName
 
     if ($netTrace.IsPresent)
     {
@@ -1112,6 +1247,9 @@ function Get-WFPInfo {
   .PARAMETER allLayers
   When present, prints more filters at different layers, depending on the inbound/outbound params.
 
+  .PARAMETER name
+  When present, prints only filters which have matching substring to the provided name 
+
   .EXAMPLE
   PS> Get-WFPInfo -inbound -localAddress <localIP> -localport <localpor> -remoteAddress <remoteAddr> -protocolType Tcp -csvPath results.csv
 
@@ -1132,7 +1270,8 @@ param (
     [switch]$detailed,
     [switch]$netTrace,
     [switch]$addTraceFilters,
-    [switch]$allLayers
+    [switch]$allLayers,
+    [string]$name
     )
 
     $FormatEnumerationLimit = -1
@@ -1149,12 +1288,21 @@ param (
 
     if ($netTrace.IsPresent) {PromptUser}
 
+    if ($null -eq $name)
+    {
+        $name = "*"
+    }
+    else 
+    {
+        $name = "*" + $name + "*"
+    }
+
     if ($is4)
     {
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv4 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
+        Show-WFP-Data -isipv4 $true -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent -filterName $name
 
     }
     if ($is6)
@@ -1162,7 +1310,7 @@ param (
         Write-Output "`n----------------------------------------------------------------------"
         Write-Output "`nIPv6 Data:" 
         Write-Output "----------------------------------------------------------------------"
-        Show-WFP-Data -isipv4 $false -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent
+        Show-WFP-Data -isipv4 $false -isInbound $isInbound -showAllLayers $allLayers.IsPresent -protocolType $protocolType -localadd $localAddress -remoteaddr $remoteAddress -localprt $localport -remoteprt $remoteport -flags $conditionFlag -appContainers $showAppContainerFilters.IsPresent -filterName $name
     }
 
     Remove-TraceFilter
