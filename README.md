@@ -7,7 +7,7 @@ The advantage WTF-WFP has is that it enables one to understand the WFP without f
 WTF-WFP utilizes [NtObjectManager](https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools/tree/main/NtObjectManager) to access the WFP APIs (and a bunch of other helpful functions it exposes). To install, simply run the following from an elevated PowerShell shell:
 
 ```PowerShell
-Install-Module -Name NtObjectManager -RequiredVersion 1.1.33
+Install-Module -Name NtObjectManager
 Install-Module wtf-wfp
 ```
 Now the Get-WFPInfo command should be available. You can validate and get more info via the help command:
