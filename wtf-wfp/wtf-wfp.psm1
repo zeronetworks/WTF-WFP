@@ -560,8 +560,9 @@ function IsLegitimateConditionForLayer{
 function Add-ProfileCondition 
 {
     param(
+       
         [parameter(Mandatory, Position = 0)]
-        [NtCoreLib.Net.Firewall]$Builder,
+        [NtCoreLib.Net.Firewall.FirewallConditionBuilder]$Builder,
         [string]$layerKeyString,
         [NtCoreLib.Net.Firewall.FirewallProfileId]$profileType
     )
@@ -580,7 +581,7 @@ function Add-LUIDCondition
 {
     param(
         [parameter(Mandatory, Position = 0)]
-        [NtCoreLib.Net.Firewall]$Builder,
+        [NtCoreLib.Net.Firewall.FirewallConditionBuilder]$Builder,
         [string]$layerKeyString,
         [uint64]$luid
     )
